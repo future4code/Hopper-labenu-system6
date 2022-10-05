@@ -15,7 +15,7 @@ export class TurmaDB {
     });
 
     public insertTurma = async (turma: Turma) => {
-        await this.connection('Turmas')
+        await this.connection('labeSystem_turmas')
             .insert({
                 id: turma.getId(),
                 nome: turma.getName(),
