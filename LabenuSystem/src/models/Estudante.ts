@@ -2,7 +2,7 @@ export type TEstudante ={
     id: string,
     nome: string,
     email: string,
-    data_nasc: string,
+    data_nasc: Date,
     turma_id: string,
     hoobies: string
 }
@@ -12,7 +12,7 @@ export class Estudante{
         private id: string,
         private nome: string,
         private email: string,
-        private data_nasc: string,
+        private data_nasc: Date,
         private turma_id: string,
         private hobbies: string
     ) {
@@ -52,8 +52,9 @@ export class Estudante{
     public setEmail(newEmail: string){
         this.email = newEmail
     }
-    public setData_nasc(newData_nasc: string){
+    public setData_nasc(newData_nasc: Date){
         this.data_nasc = newData_nasc
+        
     }
     public setTurma_id(newTurma_id: string){
         this.turma_id = newTurma_id
