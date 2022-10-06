@@ -1,1 +1,6 @@
-GET http://localhost:3003/turmas
+POST http://localhost:3003/turmas
+
+{
+    "nome": "Hopper",
+    "modulo": "0"
+}
