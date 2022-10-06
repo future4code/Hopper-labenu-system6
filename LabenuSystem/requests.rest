@@ -1,6 +1,7 @@
 POST http://localhost:3003/turmas
+Content-Type: application/json
 
 {
-    "nome": "Hopper",
-    "modulo": "0"
+    "nome": "Hooks",
+    "modulo": ""
 }

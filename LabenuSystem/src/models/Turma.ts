@@ -1,12 +1,9 @@
-import { Request, Response } from "express"
 import connection from "../database/connection"
 
 export class Turma {
     constructor(
         private id: string,
         private nome: string,
-        private docentes: string,
-        private estudantes: string,
         private modulo: string
     ) { }
 
@@ -16,14 +13,6 @@ export class Turma {
 
     getName(): string {
         return this.nome
-    }
-
-    getDocentes(): string {
-        return this.docentes
-    }
-
-    getEstudantes(): string {
-        return this.estudantes
     }
 
     getModulo(): string {
@@ -38,33 +27,67 @@ export class Turma {
         this.nome = newName
     }
 
-    setDocentes(newDocentes: string): void {
-        this.docentes = newDocentes
-    }
-
-    setEstudantes(newEstudantes: string): void {
-        this.estudantes = newEstudantes
-    }
 
     setModulo(newModulo: string): void {
         this.modulo = newModulo
     }
 };
 
-export const insertTurma = async (turma: Turma) => {
-    await connection('labeSystem_turmas')
-        .insert({
-            id: turma.getId(),
-            nome: turma.getName(),
-            docentes: turma.getDocentes(),
-            estudantes: turma.getEstudantes(),
-            modulo: turma.getModulo()
-        })
-};
 
-export const getTurma = async (turma: Turma): Promise<Turma[]> => {
-    const result = await connection('labeSystem_turmas')
-        .select('*')
+import knex from "knex"
+import dotenv from "dotenv"
 
-    return result
-};
+dotenv.config()
+
+export class TurmaDataBase{
+    private connection = knex({
+        client: "mysql",
+        connection: {
+           host: process.env.DB_HOST,
+           port: 3306,
+           user: process.env.DB_USER,
+           password: process.env.DB_PASSWORD,
+           database: process.env.DB_DATABASE,
+           multipleStatements: true
+        },
+     });
+
+    public insertTurma = async (turma: Turma) => {
+        await connection('TURMA')
+            .insert({
+                id: turma.getId(),
+                nome: turma.getName(),
+                modulo: turma.getModulo()
+            })
+    };
+    
+    public getTurma = async (turma: Turma): Promise<Turma[]> => {
+    
+        const docentes: any = await connection.raw(`
+        SELECT * FROM TURMA
+        JOIN id_docentes ON DOCENTE(id)
+        `)
+    
+        const estudantes: any = await connection.raw(`
+        SELECT * FROM TURMA
+        JOIN id_estudantes ON ESTUDANTE(id)
+        `)
+
+        const toTurmas = (turma: Turma): any => {
+            return{
+                id: turma.getId(),
+                nome: turma.getName(),
+                docentes,
+                estudantes,
+                modulo: turma.getModulo()
+            }
+        }
+            
+        const result = await connection('TURMA')
+            .select('*')
+    
+        return result.map(toTurmas)
+    };
+
+    
+}

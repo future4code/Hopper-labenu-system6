@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
-import connection from "../database/connection"
-import { insertTurma, Turma } from "../models/Turma"
+import { Turma, TurmaDataBase } from "../models/Turma"
 import { Modulo } from "../types"
 
 
@@ -10,17 +9,7 @@ export const criarTurma = async (req: Request, res: Response): Promise<void> => 
 
         let { nome, modulo }: any = req.body
 
-        let docentes: any = await connection.raw(`
-        SELECT * FROM labeSystem_turmas
-        JOIN id_docentes ON Docentes(id)
-        `)
-        
-        let estudantes: any = await connection.raw(`
-        SELECT * FROM labeSystem_turmas
-        JOIN id_estudantes ON Estudantes(id)
-        `)
-
-        if(!nome){
+            if(!nome){
             errorCode = 404
             throw new Error("Precisa passar nome da turma!");
         }
@@ -30,9 +19,9 @@ export const criarTurma = async (req: Request, res: Response): Promise<void> => 
         }
 
         const id: any = Date.now()
-        let newTurma = new Turma(id, nome, docentes, estudantes, modulo)
-
-        await insertTurma(newTurma)
+        let newTurma = new Turma(id, nome, modulo)
+        const turmaDB = new TurmaDataBase()
+        await turmaDB.insertTurma(newTurma)
 
         res.status(200).send("Turma Criada!")
 
