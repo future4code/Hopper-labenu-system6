@@ -1,8 +1,6 @@
 
 import { Request, Response } from "express"
 import { TurmaDataBase } from "../database/TurmaDataBase"
-import { Turma } from "../models/Turma";
-import { TurmaDocEst } from "../models/TurmaDocEst";
 
 export const pegarTurma = async (req: Request, res: Response): Promise<any> => {
     let errorCode = 400

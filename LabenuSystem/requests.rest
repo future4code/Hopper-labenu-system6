@@ -9,3 +9,13 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3003/turmas
+
+###
+
+PUT http://localhost:3003/turmas/modulo
+Content-Type: application/json
+
+{
+    "id": "1665065639604",
+    "modulo": "4"
+}

@@ -34,4 +34,12 @@ export class TurmaDataBase extends BaseDatabase {
 
     return result[0]
     };
+
+    public alterModulo: any = async (modulo: string, id: string) => {
+        await this.connection.raw(`
+        UPDATE TURMA
+        SET modulo = ${modulo}
+        WHERE id = ${id}
+        `)
+    }
 };
