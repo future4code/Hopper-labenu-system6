@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import { Turma } from "../models/Turma"
 import { TurmaDataBase } from "../database/TurmaDataBase"
-import { Modulo } from "../types"
 
 
 export const criarTurma = async (req: Request, res: Response): Promise<void> => {
@@ -13,10 +12,6 @@ export const criarTurma = async (req: Request, res: Response): Promise<void> => 
             if(!nome){
             errorCode = 404
             throw new Error("Precisa passar nome da turma!");
-        }
-
-        if(!modulo){
-            modulo = Modulo.ZERO
         }
 
         const id: any = Date.now()

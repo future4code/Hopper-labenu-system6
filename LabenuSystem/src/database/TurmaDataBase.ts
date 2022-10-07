@@ -1,6 +1,5 @@
 import { BaseDatabase } from "../database/connection"
 import { Turma } from "../models/Turma";
-import { TurmaDocEst } from "../models/TurmaDocEst";
 
 export class TurmaDataBase extends BaseDatabase {
 
@@ -13,40 +12,26 @@ export class TurmaDataBase extends BaseDatabase {
             })
     };
 
-    public pegarTurmas = async () => {
+    public pegarTurmas: any = async () => {
         const response = await this.connection('TURMA')
-            .select("id", "nome", "modulo")
+            .select('*')
 
-            if(response.length < 1){
-                throw new Error("Erro no resultado!");
-            }
+        return response
+    };
 
-        const docentes: any = await this.connection.raw(`
-            SELECT * FROM TURMA
-            JOIN DOCENTE ON id_docente = DOCENTE.id
-            `)
+    public docentes: any = async (id: string) => {
+       const result = await this.connection.raw(`
+        SELECT DOCENTE.id, DOCENTE.turma_id FROM DOCENTE
+        `)
 
-            if(docentes.length < 1){
-                throw new Error("Erro no docentes!");
-            }
+        return result[0]
+    };
 
-        const estudantes: any = await this.connection.raw(`
-            SELECT * FROM TURMA
-            JOIN ESTUDANTE ON id_estudante = ESTUDANTE.id
-            `)
+    public estudantes: any = async (id: string) => {
+       const result = await this.connection.raw(`
+    SELECT ESTUDANTE.id, ESTUDANTE.turma_id FROM ESTUDANTE
+    `)
 
-            if(estudantes.length < 1){
-                throw new Error("Erro no estudantes!");
-            }
-
-        const result = {
-            response,
-            docentes,
-            estudantes,
-        }
-        
-        console.log(response, docentes, estudantes)
-
-        return docentes
+    return result[0]
     };
 };
