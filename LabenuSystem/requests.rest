@@ -5,3 +5,7 @@ Content-Type: application/json
     "nome": "Hooks",
     "modulo": ""
 }
+
+###
+
+GET http://localhost:3003/turmas

@@ -1,21 +1,19 @@
 
 import { Request, Response } from "express"
-import { getTurma, Turma, TurmaDataBase } from "../models/Turma"
-import { Modulo } from "../types"
+import { TurmaDataBase } from "../database/TurmaDataBase"
 
-
-export const pegarTurma = async (req: Request, res: Response): Promise<void> => {
+export const pegarTurma = async (req: Request, res: Response): Promise<any> => {
     let errorCode = 400
     try {
 
-        const turmaDB = new TurmaDataBase()        
-        const result = await turmaDB.getTurma()
+        const turmaDB = new TurmaDataBase()
+        const result = turmaDB.pegarTurmas()
 
-        res.status(200).send()
+        res.status(200).send(result)
 
     } catch (error: any) {
         console.log(error)
         res.send(error.message || error.sqlMessage)
     }
-}
+};
 

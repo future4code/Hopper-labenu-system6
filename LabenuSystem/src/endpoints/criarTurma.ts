@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
-import { Turma, TurmaDataBase } from "../models/Turma"
+import { Turma } from "../models/Turma"
+import { TurmaDataBase } from "../database/TurmaDataBase"
 import { Modulo } from "../types"
 
 
@@ -29,4 +30,4 @@ export const criarTurma = async (req: Request, res: Response): Promise<void> => 
         console.log(error)
         res.send(error.message || error.sqlMessage)
     }
-}
+};
