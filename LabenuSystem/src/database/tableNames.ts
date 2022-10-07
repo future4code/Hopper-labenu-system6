@@ -1,11 +1,16 @@
 `
+CREATE TABLE TURMA(
+    id VARCHAR(255) PRIMARY KEY,
+    nome VARCHAR(255),
+    modulo VARCHAR(255) DEFAULT 0
+);
 CREATE TABLE ESTUDANTE(
     id VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     data_nasc DATE NOT NULL,
     turma_id VARCHAR(255) NOT NULL,
-    FOREING KEY (turma_id) REFERENCES TURMA(id)
+    FOREIGN KEY (turma_id) REFERENCES TURMA(id)
 );
 
 CREATE TABLE ESTUDANTE_HOBBY(
@@ -17,23 +22,16 @@ CREATE TABLE ESTUDANTE_HOBBY(
 );
 
 CREATE TABLE HOBBY(
-    id VACHAR(255) PRIMARY KEY,
+    id VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(255) NOT NULL UNIQUE
 );
-
-CREATE TABLE TURMA(
-    id VARCHAR(255) PRIMARY KEY,
-    nome VARCHAR(255),
-    modulo VARCHAR(255) DEFAULT 0
-);
-
 CREATE TABLE DOCENTE(
     id VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(255),
     email VARCHAR(255) NOT NULL UNIQUE,
     data_nasc DATE NOT NULL,
     turma_id VARCHAR(255) NOT NULL,
-    FOREIGN KEY (turma_id) REFERENCES TURMA(id),
+    FOREIGN KEY (turma_id) REFERENCES TURMA(id)
 );
 
 CREATE TABLE DOCENTE_ESPECIALIDADE(
@@ -49,4 +47,11 @@ CREATE TABLE ESPECIALIDADE(
     nome VARCHAR(255) NOT NULL UNIQUE
 );
 
+INSERT INTO ESTUDANTE (id, nome, email, data_nasc, turma_id) VALUES ('2','Jordan Jordana','jordan@email.com','1987/01/01', 1);
+INSERT INTO ESTUDANTE (id, nome, email, data_nasc, turma_id) VALUES ('3','Adriano Fernando','adriano@email.com','1987/01/01', 1);
+
+SELECT * FROM ESTUDANTE;
+
+INSERT INTO TURMA (id, nome, modulo) VALUES (1, "hopper", 1);
+INSERT INTO TURMA (id, nome, modulo) VALUES (2, "guanabara", 2);
 `

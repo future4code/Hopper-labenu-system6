@@ -2,6 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import {criarEstudante} from "./endpoints/criarEstudante"
+import {buscarEstudante, buscarTodosEstudantes} from "./endpoints/buscarEstudante"
+import { mudarEstudante } from './endpoints/mudarEstudante'
 
 dotenv.config()
 const app = express()
@@ -15,7 +17,11 @@ app.listen(process.env.PORT || 3003, () => {
 
 app.post("/estudante", criarEstudante)
 
-// app.get("/ping", ping)
+app.get("/estudante/:nome", buscarEstudante)
+
+app.get("/estudante", buscarTodosEstudantes)
+
+app.put("/mudarturma", mudarEstudante)
 
 // // Exercício 1 - Create users
 // app.post("/users", createUser)
