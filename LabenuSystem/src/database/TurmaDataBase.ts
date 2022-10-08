@@ -1,10 +1,11 @@
-import { BaseDatabase } from "../database/connection"
+import { BaseDatabase } from "./BaseDatabase"
 import { Turma } from "../models/Turma";
 
 export class TurmaDataBase extends BaseDatabase {
+    TABLE_NAME = "TURMA"
 
     public insertTurma = async (turma: Turma) => {
-        await this.connection('TURMA')
+        await BaseDatabase.connection('TURMA')
             .insert({
                 id: turma.getId(),
                 nome: turma.getName(),
@@ -13,14 +14,14 @@ export class TurmaDataBase extends BaseDatabase {
     };
 
     public pegarTurmas: any = async () => {
-        const response = await this.connection('TURMA')
+        const response = await BaseDatabase.connection('TURMA')
             .select('*')
 
         return response
     };
 
     public docentes: any = async (id: string) => {
-       const result = await this.connection.raw(`
+       const result = await BaseDatabase.connection.raw(`
         SELECT DOCENTE.id, DOCENTE.turma_id FROM DOCENTE
         `)
 
@@ -28,7 +29,7 @@ export class TurmaDataBase extends BaseDatabase {
     };
 
     public estudantes: any = async (id: string) => {
-       const result = await this.connection.raw(`
+       const result = await BaseDatabase.connection.raw(`
     SELECT ESTUDANTE.id, ESTUDANTE.turma_id FROM ESTUDANTE
     `)
 
@@ -36,7 +37,7 @@ export class TurmaDataBase extends BaseDatabase {
     };
 
     public alterModulo: any = async (modulo: string, id: string) => {
-        await this.connection.raw(`
+        await BaseDatabase.connection.raw(`
         UPDATE TURMA
         SET modulo = ${modulo}
         WHERE id = ${id}
