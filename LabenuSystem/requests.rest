@@ -2,7 +2,7 @@ POST http://localhost:3003/turmas
 Content-Type: application/json
 
 {
-    "nome": "Hooks",
+    "nome": "Carver",
     "modulo": ""
 }
 
@@ -16,6 +16,6 @@ PUT http://localhost:3003/turmas/modulo
 Content-Type: application/json
 
 {
-    "id": "1665065639604",
-    "modulo": "4"
+    "id": "1665195988765",
+    "modulo": "1"
 }

@@ -8,12 +8,17 @@ export const alterarModulo = async (req: Request, res: Response): Promise<void> 
     try {
 
         let {id, modulo} = req.body
-        const turmaDB = new TurmaDataBase()
-        let newTurma = new Turma(id, nome: nome, modulo)
-        
-        await turmaDB.alterModulo(newTurma)
 
-        res.status(200).send("Modulo alterado!")
+        if(!id || !modulo){
+            errorCode = 404
+            throw new Error("Precisa indicar id da turma e modulo para alterar!");
+        }
+        
+        const turmaDB = new TurmaDataBase()
+                                
+        await turmaDB.alterModulo(modulo, id)
+
+        res.status(200).send(`Modulo alterado para ${modulo}!`)
 
     } catch (error: any) {
         console.log(error)

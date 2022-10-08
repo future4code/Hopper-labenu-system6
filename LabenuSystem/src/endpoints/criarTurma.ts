@@ -19,7 +19,7 @@ export const criarTurma = async (req: Request, res: Response): Promise<void> => 
         const turmaDB = new TurmaDataBase()
         await turmaDB.insertTurma(newTurma)
 
-        res.status(200).send("Turma Criada!")
+        res.status(200).send(`Turma ${nome} Criada!`)
 
     } catch (error: any) {
         console.log(error)
