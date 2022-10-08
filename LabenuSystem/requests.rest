@@ -1,0 +1,25 @@
+POST http://localhost:3003/docente
+Content-Type: application/json
+
+{
+    "nome": "João Nogueira",
+    "email": "joao@gmail.com",
+    "data_nasc": "22/02/2022",
+    "turma_id": "1665065688319"
+}
+
+###
+
+GET http://localhost:3003/docente
+
+###
+
+PUT http://localhost:3003/docente
+Content-Type: application/json
+
+{
+    "id": "1665187455741",
+    "turma_id": "1665065688319"
+}
+
+

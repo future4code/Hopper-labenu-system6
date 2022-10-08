@@ -4,6 +4,9 @@ import dotenv from 'dotenv'
 import {criarEstudante} from "./endpoints/criarEstudante"
 import {buscarEstudante, buscarTodosEstudantes} from "./endpoints/buscarEstudante"
 import { mudarEstudante } from './endpoints/mudarEstudante'
+import { criarDocente } from './endpoints/criarDocente'
+import { buscarTodosDocentes } from './endpoints/buscarDocente'
+import { mudarDocente } from './endpoints/mudarDocente'
 
 dotenv.config()
 const app = express()
@@ -15,6 +18,8 @@ app.listen(process.env.PORT || 3003, () => {
   console.log(`Servidor rodando na porta ${process.env.PORT || 3003}`)
 })
 
+//Estudantes
+
 app.post("/estudante", criarEstudante)
 
 app.get("/estudante/:nome", buscarEstudante)
@@ -23,20 +28,10 @@ app.get("/estudante", buscarTodosEstudantes)
 
 app.put("/mudarturma", mudarEstudante)
 
-// // Exercício 1 - Create users
-// app.post("/users", createUser)
+//Docentes
 
-// // Exercício 2 - Get users
-// app.get("/users", getUsers)
+app.post("/docente", criarDocente)
 
-// // Exercício 3 - Create product
-// app.post("/products", createProduct)
+app.get("/docente", buscarTodosDocentes)
 
-// // Exercício 4 - Get products
-// app.get("/products", getProducts)
-
-// // Exercício 5 - Create purchase
-// app.post("/purchases", createPurchase)
-
-// // Exercício 6 - Get user purchases
-// app.get("/users/:id/purchases", getUserPurchases)
+app.put("/docente", mudarDocente)
