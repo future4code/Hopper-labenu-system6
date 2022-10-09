@@ -1,3 +1,14 @@
+
+POST http://localhost:3003/turmas
+Content-Type: application/json
+
+{
+    "nome": "Carver",
+    "modulo": ""
+}
+
+###
+
 POST http://localhost:3003/docente
 Content-Type: application/json
 
@@ -10,6 +21,18 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:3003/turmas
+
+###
+
+PUT http://localhost:3003/turmas/modulo
+Content-Type: application/json
+
+{
+    "id": "1665195988765",
+    "modulo": "1"
+}
+
 GET http://localhost:3003/docente
 
 ###
@@ -21,5 +44,4 @@ Content-Type: application/json
     "id": "1665187455741",
     "turma_id": "1665065688319"
 }
-
 
