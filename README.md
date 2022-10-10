@@ -1,8 +1,8 @@
-<h1 align="center">  LabenuSystem: </h1>
+<h1 align="center">  LabenuSystem 🏬 (backend)</h1>
 <br/>
 <br/>
 
-### Integrantes:
+### Desenvolvedores 💻
 <table align="center" width="500px" border="1px">
   <tr align="center" width="25%" height="12%">
        <th>Diego Souza Motta</th>
@@ -24,7 +24,21 @@
 </br>
 </br>   
 
-<h1>✔️ O que funciona:</h1>
+<h1>🛠️ Tecnologias Utilizadas 💾 </h1>
+<br></br>
+ <ul>
+  <li> Typescript; </li>   
+  <li> Node; </li>
+  <li> MySQL; </li> 
+  <li> Express; </li> 
+  <li> Cors; </li>   
+  <li> Dotenv;</li>  
+  <li> Knex.</li>
+</ul>   
+</br>
+</br>
+
+<h1> Funcionalidades: </h1>
 </br>
 </br>
 
