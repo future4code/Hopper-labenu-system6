@@ -1,24 +1,32 @@
-## LabenuSystem:
+<h1 align="center">  LabenuSystem: </h1>
+<br/>
+<br/>
 
-Você estuda na Labenu_ há tanto tempo que já parecem anos, não é? Então, hoje, vamos pedir para criar um sistema que represente o básico da nossa organização. 
+### Integrantes:
+<table align="center" width="500px" border="1px">
+  <tr align="center" width="25%" height="12%">
+       <th>Diego Souza Motta</th>
+       <th>Maicon Miranda de Jesus</th>
+        <th>Priscilla L. de Oliveira Ramos</th>
+  </tr>
+  <tr align="center">
+    <td width="25%">
+  <img width='150px' height='150px' src='https://ca.slack-edge.com/TLAVDH7C2-U02UXL7VALW-9bfb7dda36d4-512' >
+    </td>
+        <td width="25%">
+  <img width='150px' height='150px' src='https://ca.slack-edge.com/TLAVDH7C2-U02V4AL6GAW-55c7d679189d-512' >
+    </td>
+        <td width="25%">
+  <img width='150px' height='150px' src='https://ca.slack-edge.com/TLAVDH7C2-U02V1D7HJ2Z-ac7df3a4cba3-512' >
+    </td>
+  </tr>
+</table>
+</br>
+</br>   
 
-Ele deve possuir, ao menos, as 3 entidades importantes:
-
-1. Estudantes 
-
-    Representa estudantes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e os principais hobbies dele. 
-
-2. Docente
-
-    Representa docentes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e todas as especialidades dele. Há 7 especialidades: React, Redux, CSS, Testes, Typescript, Programação Orientada a Objetos e Backend
-
-3. Turma
-
-    Toda turma é composta das seguintes características: id, nome, data de início, data de término, lista de professores responsáveis, uma lista de alunos e módulo atual em que a turma está.
-
-    O módulo pode assumir os valores de 1 a 7 ou `undefined`, indicando que as aulas dessa turma ainda não começaram. Para esse exercício, vamos considerar que existam dois tipos de turma: integral ou noturna. Há uma restrição para o nome das turmas noturnas: tem que terminar com `-na-night`.
-
-As funcionalidades básicas são:
+<h1>✔️ O que funciona:</h1>
+</br>
+</br>
 
 → Criar estudante;
 
@@ -31,3 +39,5 @@ As funcionalidades básicas são:
 → Adicionar docente na turma;
 
 → Pegar a idade de algum estudante a partir do id
+ </br>
+
